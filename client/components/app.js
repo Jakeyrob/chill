@@ -1,11 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-var app = React.createClass({
-  render: function() {
-    return <div>Hello {this.props.name}</div>;
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  } 
+  render() {
+    return (
+      <div>
+        <div>Hello {this.props.name}!</div>
+      </div>
+    );
   }
-});
+};
 
 
-module.exports = app;
+module.exports = App;

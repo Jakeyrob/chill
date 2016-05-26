@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './components/app';
 
 
-
 ReactDOM.render(
-  <App name = 'world!'/>,
-  document.getElementById('example')
+  <App name='Jake'/>,
+  document.getElementById('app')
 );
