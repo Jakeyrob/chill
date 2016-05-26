@@ -16,6 +16,12 @@
   ],
   "author": "Jake Pace",
   "license": "MIT",
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
+  },
   "dependencies": {
     "babel-core": "^6.9.0",
     "babel-loader": "^6.2.4",
