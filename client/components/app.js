@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import MovieList from './movie_list';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div>Hello {this.props.name}!</div>
+        <MovieList />
       </div>
     );
   }
