@@ -4,7 +4,10 @@ const movie = '&type=movie';
 const series = '&type=series';
 
 module.exports = {
-  movieSearch: (movieTitle) => {
-    return fetch(server + search + movie + movieTitle);
+  movieSearch: (title) => {
+    return fetch(server + search + title + movie);
+  },
+  seriesSearch: (title) => {
+    return fetch(server + search + title + series);
   }
 };
