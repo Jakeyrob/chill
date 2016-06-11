@@ -1,29 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import MovieList from './movie_list';
-import api from './api';
+import SearchBar from './searchbar';
+import api from '../utils/api';
 
-const submitSearch = () => {
-  api.movieSearch(this.state.searchInput)
-    .then(function(results){
-      this.setState(movies: this.state.movies.concat(this.searchResults[0]);); 
-    }
-  );
+const submitSearch = (query, isMovie) => {
+  if (isMovie) {
+    api.movieSearch(query)
+      .then(function(results){
+        this.setState({results: this.state.movies.concat(this.searchResults[0])}); 
+      }); 
+  } else {
+    api.seriesSearch(query)
+      .then(function(results){
+        this.setState({results: this.state.movies.concat(this.searchResults[0])});
+      });
+  }
+};
+
+const handleSearchInput = (event) => {
+  this.setState({query: event.target.value});
 };
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies: [],
-      searchInput: '',
+      results: [],
       searchResults: []
     };
   } 
   render() {
     return (
       <div>
-        <SearchBar submitSearch={submitSearch} />
+        <SearchBar submitSearch={submitSearch.bind(this)} />
         <MovieList />
       </div>
     );
