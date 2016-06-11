@@ -5,6 +5,7 @@ const series = '&type=series';
 
 module.exports = {
   movieSearch: (title) => {
+    console.log('movieSearch is firing!');
     return fetch(server + search + title + movie);
   },
   seriesSearch: (title) => {

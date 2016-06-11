@@ -4,25 +4,27 @@ import ReactDOM from 'react-dom';
 class SearchBar extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      query: '',
-      searchingMovie: true,
-      searchingSeries: false
-    };
+    this.state = {};
   }
+
   render(){
     return (
       <div>
         <form>
-          <input type='text' placeholder='Search...' value={this.state.query}></input>
-          <input type='checkbox' />
+          <input 
+            type='text' 
+            placeholder='Search...' 
+            value={this.props.query}
+            onChange={this.props.handleTextChange}
+          >
+          </input>
+          <input type='checkbox' onChange={this.props.handleMovieCheck} />
           <p>Movie</p>
-          <input type='checkbox' />
-          <p>Series</p>
-          <button 
-            onclick={this.searchingMovie ? 
-            this.props.submitSearch(this.state.query, true) : 
-            this.props.submitSearch(this.state.query, false)}
+          <input type='checkbox' onChange={this.props.handleSeriesCheck}/>
+          <p>TV Series</p>
+          <button
+            type='submit' 
+            onClick={this.props.submitSearch} 
           > 
             Submit
           </button>

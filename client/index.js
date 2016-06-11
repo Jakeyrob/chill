@@ -4,6 +4,6 @@ import App from './components/app';
 
 
 ReactDOM.render(
-  <App name='Jake'/>,
+  <App />,
   document.getElementById('app')
 );
