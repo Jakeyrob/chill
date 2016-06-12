@@ -16,9 +16,12 @@ class MovieList extends React.Component {
         {this.props.results.map((result) => (
           <MovieCard
             title={result.Title} 
-            description={result.description} 
-            rating={result.rating} 
-            thumbnail={result.thumbnail} 
+            year={result.Year}
+            genre={result.Genre}
+            runtime={result.Runtime}
+            description={result.Plot} 
+            rating={result.imdbRating} 
+            thumbnail={result.Poster} 
             key={result.imdbID}
           /> 
         ))}
