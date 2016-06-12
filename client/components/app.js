@@ -20,10 +20,12 @@ class App extends React.Component {
     this.setState({query: event.target.value});
   } 
 
+  // TODO: implement
   handleMovieCheck(event) {
 
   }
 
+  // TODO: implement
   handleSeriesCheck(event) {
     
   }
@@ -32,15 +34,14 @@ class App extends React.Component {
     event.preventDefault();
     if (this.state.searchingMovie) {
       return api.movieSearch(this.state.query)
-        .then( (results) => {
-          console.log("Movie results:", results.Search);
-          this.setState({results: results.Search});
+        .then( response => {
+          this.setState({results: response.Search});
           console.log(this.state);
         }); 
     } else {
       return api.seriesSearch(this.state.query)
-        .then( (results) => {
-          this.setState({results: results.Search});
+        .then( response => {
+          this.setState({results: response.Search});
         });
     }
   }
@@ -57,7 +58,6 @@ class App extends React.Component {
           query={this.state.query}
         />
         <MovieList />
-        {console.log(this.state)}
       </div>
     );
   }

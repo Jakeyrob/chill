@@ -6,9 +6,10 @@ class MovieCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "The Godfather",
-      description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
-      rating: 7
+      title: this.props.title,
+      description: this.props.description,
+      rating: this.props.rating,
+      thumbnail: this.props.thumbnail
     };
   }
   render() {
