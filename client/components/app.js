@@ -13,7 +13,6 @@ class App extends React.Component {
       query: '',
       searchingMovie: true,
       results: [],
-      searchResults: []
     };
   }
 
@@ -21,32 +20,30 @@ class App extends React.Component {
     this.setState({query: event.target.value});
   } 
 
-  handleMovieCheck() {
+  handleMovieCheck(event) {
 
   }
 
-  handleSeriesCheck() {
+  handleSeriesCheck(event) {
     
   }
 
-  submitSearch() {
+  submitSearch(event) {
+    event.preventDefault();
     if (this.state.searchingMovie) {
-      api.movieSearch(this.state.query)
+      return api.movieSearch(this.state.query)
         .then( (results) => {
-          this.setState({results: results});
+          console.log("Movie results:", results.Search);
+          this.setState({results: results.Search});
+          console.log(this.state);
         }); 
     } else {
-      api.seriesSearch(this.state.query)
+      return api.seriesSearch(this.state.query)
         .then( (results) => {
-          this.setState({results: results});
+          this.setState({results: results.Search});
         });
     }
-    console.log("submitSearch is firing!")
   }
-
-  // updateSearch(results) {
-  //   this.setState({results: results});
-  // }
 
   render() {
     return (
@@ -61,7 +58,6 @@ class App extends React.Component {
         />
         <MovieList />
         {console.log(this.state)}
-        {console.log("app re-rendering")}
       </div>
     );
   }

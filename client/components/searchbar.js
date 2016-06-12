@@ -24,7 +24,7 @@ class SearchBar extends React.Component {
           <p>TV Series</p>
           <button
             type='submit' 
-            onClick={this.props.submitSearch} 
+            onClick={this.props.handleSearchSubmit} 
           > 
             Submit
           </button>
