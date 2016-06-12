@@ -57,7 +57,7 @@ class App extends React.Component {
           handleSeriesCheck={this.handleSeriesCheck.bind(this)}
           query={this.state.query}
         />
-        <MovieList />
+        <MovieList results={this.state.results} />
       </div>
     );
   }

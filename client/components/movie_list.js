@@ -13,11 +13,15 @@ class MovieList extends React.Component {
   render() {
     return (
       <div>
-        <MovieCard 
-          title={this.props.title} 
-          description={this.props.description} 
-          rating={this.props.rating} 
-          thumbnail={this.props.thumbnail}/>
+        {this.props.results.map((result) => (
+          <MovieCard
+            title={result.Title} 
+            description={result.description} 
+            rating={result.rating} 
+            thumbnail={result.thumbnail} 
+            key={result.imdbID}
+          /> 
+        ))}
       </div>
     );
   }
