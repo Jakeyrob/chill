@@ -27,6 +27,7 @@
     "babel-loader": "^6.2.4",
     "babel-preset-react": "^6.5.0",
     "react": "^15.1.0",
+    "react-autosuggest": "^3.7.4",
     "react-dom": "^15.1.0",
     "shortid": "^2.2.6",
     "webpack": "^1.13.1"
