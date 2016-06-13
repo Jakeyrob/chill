@@ -14,6 +14,11 @@ class App extends React.Component {
       searchingMovie: true,
       results: [],
     };
+
+    this.submitSearch = this.submitSearch.bind(this);
+    this.handleSearchInput = this.handleSearchInput.bind(this);
+    this.handleMovieCheck = this.handleMovieCheck.bind(this);
+    this.handleSeriesCheck = this.handleSeriesCheck.bind(this);
   }
 
   handleSearchInput(event) {
@@ -51,10 +56,10 @@ class App extends React.Component {
       <div>
       <h1>Chill</h1>
         <SearchBar 
-          handleSearchSubmit={this.submitSearch.bind(this)} 
-          handleTextChange={this.handleSearchInput.bind(this)}
-          handleMovieCheck={this.handleMovieCheck.bind(this)}
-          handleSeriesCheck={this.handleSeriesCheck.bind(this)}
+          handleSearchSubmit={this.submitSearch} 
+          handleTextChange={this.handleSearchInput}
+          handleMovieCheck={this.handleMovieCheck}
+          handleSeriesCheck={this.handleSeriesCheck}
           query={this.state.query}
         />
         <MovieList results={this.state.results} />
