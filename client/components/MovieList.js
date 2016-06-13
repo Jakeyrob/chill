@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MovieCard from './movie_card';
+import MovieCard from './MovieCard';
 
 // TODO: Make stateless?
 class MovieList extends React.Component {

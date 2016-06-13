@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MovieList from './movie_list';
-import SearchBar from './searchbar';
+import MovieList from './MovieList';
+import SearchBar from './Searchbar';
 import api from '../utils/api';
 
 

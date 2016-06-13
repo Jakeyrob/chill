@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import WebRating from './web_rating';
+import WebRating from './WebRating';
 
 class MovieCard extends React.Component {
   constructor(props) {

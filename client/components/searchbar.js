@@ -4,7 +4,9 @@ import ReactDOM from 'react-dom';
 class SearchBar extends React.Component {
   constructor(props){
     super(props);
-    this.state = {};
+    this.state = {
+      results: []
+    };
   }
 
   render(){
