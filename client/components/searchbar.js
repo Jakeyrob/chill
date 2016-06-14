@@ -103,15 +103,14 @@ class SearchBar extends React.Component {
   }
 
   render() {
-    const { value, suggestions } = this.state;
     const inputProps = {
-      placeholder: "Type 'c'",
-      value,
+      placeholder: 'Search...',
+      value: this.state.value,
       onChange: this.onChange
     };
 
     return (
-      <Autosuggest suggestions={suggestions}
+      <Autosuggest suggestions={this.state.suggestions}
                    onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
                    getSuggestionValue={getSuggestionValue}
                    renderSuggestion={renderSuggestion}
