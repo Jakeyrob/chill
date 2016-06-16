@@ -10,8 +10,18 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // Passed up from SearchBar
+      selectedTitleID: '',
+      // Passed down to MovieList
       titles: []
     };
+
+    this.fetchTitle = this.fetchTitle.bind(this);
+  }
+
+  // Sets this.state.selectedTitleID, based on click of search result
+  selectTitle(event) {
+    
   }
 
   // TODO: Change to handle clicking on search result
@@ -22,15 +32,16 @@ class App extends React.Component {
       .then( response => {
         this.setState({results: response.Search});
         console.log(this.state);
-      }); 
+      });
   }
+
 
   render() {
     return (
       <div>
       <h1>Chill</h1>
         <SearchBar />
-        <MovieList results={this.state.titles} />
+        <MovieList titles={this.state.titles} />
       </div>
     );
   }

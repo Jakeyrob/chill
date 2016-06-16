@@ -85,11 +85,12 @@ class SearchBar extends React.Component {
     this.setState({
       value: newValue
     });
-    // TODO: Add promise which fires API request
+    // TODO: Add promise which fires API Search request if method === 'type'
+    // fires idSearch if method === 'click'
     
   }
   
-  onSuggestionsUpdateRequested({ value }) {
+  onSuggestionsUpdateRequested({ value, reason }) {
     this.setState({
       suggestions: this.getSuggestions(value)
     });

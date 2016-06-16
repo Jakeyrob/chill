@@ -7,7 +7,6 @@ class MovieList extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      movies: []
     };
   }
 
@@ -17,7 +16,7 @@ class MovieList extends React.Component {
 
     /* (
       <div>
-        {this.props.results.map((result) => (
+        {this.props.titles.map((result) => (
           <MovieCard
             title={result.Title} 
             year={result.Year}
