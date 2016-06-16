@@ -38,17 +38,6 @@ function escapeRegexCharacters(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-function getSuggestions(value) {
-  const escapedValue = escapeRegexCharacters(value.trim());
-  
-  if (escapedValue === '') {
-    return [];
-  }
-
-  const regex = new RegExp('\\b' + escapedValue, 'i');
-  
-  return titles.filter(title => regex.test(getSuggestionValue(title)));
-}
 
 function getSuggestionValue(suggestion) {
   return `${suggestion.Title} ${suggestion.Year}`;
@@ -62,7 +51,7 @@ function renderSuggestion(suggestion, { value, valueBeforeUpDown }) {
 
   return (
     <span className={'suggestion-content ' + suggestion.imdbID}>
-      <span className="name">
+      <span className="title">
         {
           parts.map((part, index) => {
             const className = part.highlight ? 'highlight' : null;
@@ -83,23 +72,39 @@ class SearchBar extends React.Component {
 
     this.state = {
       value: '',
-      suggestions: getSuggestions('')
+      suggestions: this.getSuggestions(''),
+      titles: titles
     };
     
     this.onChange = this.onChange.bind(this);
     this.onSuggestionsUpdateRequested = this.onSuggestionsUpdateRequested.bind(this);
+    this.getSuggestions = this.getSuggestions.bind(this);
   }
 
   onChange(event, { newValue, method }) {
     this.setState({
       value: newValue
     });
+    // TODO: Add promise which fires API request
+    
   }
   
   onSuggestionsUpdateRequested({ value }) {
     this.setState({
-      suggestions: getSuggestions(value)
+      suggestions: this.getSuggestions(value)
     });
+  }
+
+  getSuggestions(value) {
+    const escapedValue = escapeRegexCharacters(value.trim());
+    
+    if (escapedValue === '') {
+      return [];
+    }
+
+    const regex = new RegExp('\\b' + escapedValue, 'i');
+    
+    return this.state.titles.filter(title => regex.test(getSuggestionValue(title)));
   }
 
   render() {

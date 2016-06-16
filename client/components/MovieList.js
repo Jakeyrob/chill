@@ -7,11 +7,15 @@ class MovieList extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      movies: []
     };
   }
 
   render() {
-    return (
+    // TODO: Uncomment & remove stray div to display movie cards
+    return <div> </div>
+
+    /* (
       <div>
         {this.props.results.map((result) => (
           <MovieCard
@@ -27,6 +31,7 @@ class MovieList extends React.Component {
         ))}
       </div>
     );
+    */
   }
 };
 
