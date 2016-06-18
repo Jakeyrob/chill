@@ -21,7 +21,7 @@ class App extends React.Component {
 
   // Sets this.state.selectedTitleID, based on click of search result
   selectTitle(event) {
-    
+
   }
 
   // TODO: Change to handle clicking on search result

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Autosuggest from 'react-autosuggest';
 import highlight from 'autosuggest-highlight';
+import api from '../utils/api';
 
 const titles = [
   {
@@ -73,21 +74,38 @@ class SearchBar extends React.Component {
     this.state = {
       value: '',
       suggestions: this.getSuggestions(''),
-      titles: titles
+      results: []
     };
     
     this.onChange = this.onChange.bind(this);
     this.onSuggestionsUpdateRequested = this.onSuggestionsUpdateRequested.bind(this);
     this.getSuggestions = this.getSuggestions.bind(this);
+    this.search = this.search.bind(this);
+  }
+
+  // TODO: Debounce API calls
+  search() {
+    if (this.state.value.trim().length > 2) {
+      api.movieSearch(this.state.value)
+        .then( response => {
+          this.setState(
+            {results: response.Search}, 
+            this.onSuggestionsUpdateRequested({value: this.state.value, reason:'type'})
+          );
+          console.log(this.state);
+        });
+    }
   }
 
   onChange(event, { newValue, method }) {
-    this.setState({
-      value: newValue
-    });
-    // TODO: Add promise which fires API Search request if method === 'type'
-    // fires idSearch if method === 'click'
+    // fires API Search request if method === 'type'
+    if (method === 'type') {
+      this.setState({ value: newValue }, this.search());;
     
+    // TODO: fires idSearch if method === 'click'
+    } else if (method === 'click') {
+      // this.setState({ value: newValue }, this.search());;
+    }
   }
   
   onSuggestionsUpdateRequested({ value, reason }) {
@@ -105,7 +123,11 @@ class SearchBar extends React.Component {
 
     const regex = new RegExp('\\b' + escapedValue, 'i');
     
-    return this.state.titles.filter(title => regex.test(getSuggestionValue(title)));
+    if (this.state.results) {
+      return this.state.results.filter(title => regex.test(getSuggestionValue(title)));
+    }
+    console.log()
+    return [];
   }
 
   render() {
