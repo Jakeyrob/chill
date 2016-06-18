@@ -81,6 +81,7 @@ class SearchBar extends React.Component {
     this.onSuggestionsUpdateRequested = this.onSuggestionsUpdateRequested.bind(this);
     this.getSuggestions = this.getSuggestions.bind(this);
     this.search = this.search.bind(this);
+    this.onSuggestionSelected = this.onSuggestionSelected.bind(this);
   }
 
   // TODO: Debounce API calls
@@ -146,7 +147,9 @@ onSuggestionSelected(event, { suggestion, suggestionValue, sectionIndex, method 
                    onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
                    getSuggestionValue={getSuggestionValue}
                    renderSuggestion={renderSuggestion}
-                   inputProps={inputProps} />
+                   inputProps={inputProps}
+                   onSuggestionSelected={this.onSuggestionSelected} 
+      />
     );
   }
 }
