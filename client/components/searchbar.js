@@ -102,11 +102,15 @@ class SearchBar extends React.Component {
     if (method === 'type') {
       this.setState({ value: newValue }, this.search());;
     
-    // TODO: fires idSearch if method === 'click'
-    } else if (method === 'click') {
-      // this.setState({ value: newValue }, this.search());;
-    }
+    
+    } 
   }
+
+  // TODO: implement onSuggestionSelected
+onSuggestionSelected(event, { suggestion, suggestionValue, sectionIndex, method }) {
+  // set value to suggestion.Title
+  // fire idSearch if method === 'click'
+}
   
   onSuggestionsUpdateRequested({ value, reason }) {
     this.setState({
