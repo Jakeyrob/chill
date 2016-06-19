@@ -51,7 +51,10 @@ function renderSuggestion(suggestion, { value, valueBeforeUpDown }) {
   const parts = highlight.parse(suggestionText, matches);
 
   return (
-    <span className={'suggestion-content ' + suggestion.imdbID}>
+    <span style={{
+                  backgroundImage: 'url({' + suggestion.Poster + '})',
+                  className: 'suggestion-content ' + suggestion.imdbID
+                }}>
       <span className="title">
         {
           parts.map((part, index) => {
