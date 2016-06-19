@@ -86,24 +86,26 @@ class SearchBar extends React.Component {
 
   // TODO: Debounce API calls
   search() {
-    if (this.state.value.trim().length > 2) {
+   if (this.state.value.trim().length > 2) {
       api.movieSearch(this.state.value)
         .then( response => {
+          console.log('Response from API: ', response);
           this.setState(
             {results: response.Search}, 
             this.onSuggestionsUpdateRequested({value: this.state.value, reason:'type'})
           );
           console.log(this.state);
         });
-    }
+   }
   }
 
   onChange(event, { newValue, method }) {
     // fires API Search request if method === 'type'
     if (method === 'type') {
-      this.setState({ value: newValue }, this.search());;
-    
-    
+      this.setState(
+        { value: newValue }, 
+        () => this.search()
+      );;
     } 
   }
 
