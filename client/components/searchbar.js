@@ -52,8 +52,8 @@ function renderSuggestion(suggestion, { value, valueBeforeUpDown }) {
 
   return (
     <span style={{
-                  backgroundImage: 'url({' + suggestion.Poster + '})',
-                  className: 'suggestion-content ' + suggestion.imdbID
+                  backgroundImage: 'url(' + suggestion.Poster + ')',
+                  className: 'suggestion-content ' + suggestion.imdbID,
                 }}>
       <span className="title">
         {
