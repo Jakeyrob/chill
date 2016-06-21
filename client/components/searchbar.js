@@ -52,9 +52,9 @@ function renderSuggestion(suggestion, { value, valueBeforeUpDown }) {
 
   return (
     <span style={{
-                  backgroundImage: 'url(' + suggestion.Poster + ')',
                   className: 'suggestion-content ' + suggestion.imdbID,
                 }}>
+      <img className='poster' src={suggestion.Poster} alt={suggestion.Title + ' poster'} /> 
       <span className="title">
         {
           parts.map((part, index) => {

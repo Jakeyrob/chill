@@ -7,9 +7,9 @@ body {
 }
 
 .react-autosuggest__input {
-  width: 240px;
-  height: 30px;
-  padding: 10px 20px;
+  width: 70%;
+  height: 40px;
+  padding: 2% 4%;
   font-family: Helvetica, sans-serif;
   font-weight: 300;
   font-size: 16px;
@@ -29,9 +29,9 @@ body {
 .react-autosuggest__suggestions-container {
   position: absolute;
   top: 51px;
-  width: 280px;
+  width: 78%;
   margin: 0;
-  padding: 0;
+  padding: 0px 0px;
   list-style-type: none;
   border: 1px solid #aaa;
   background-color: #fff;
@@ -63,9 +63,14 @@ body {
   background-repeat: no-repeat;
 }
 
+.poster {
+  height: 70px; 
+  width: 50px;
+}
+
 .title {
-  margin-left: 68px;
-  line-height: 45px;
+  margin-left: 20px;
+  line-height: 38px;
 }
 
 .highlight {
