@@ -4,37 +4,6 @@ import Autosuggest from 'react-autosuggest';
 import highlight from 'autosuggest-highlight';
 import api from '../utils/api';
 
-const titles = [
-  {
-    Poster: 'http://ia.media-imdb.com/images/M/MV5BMjEyMjcyNDI4MF5BMl5BanBnXkFtZTcwMDA5Mzg3OA@@._V1_SX300.jpg',
-    Title:'The Godfather',
-    Type:'movie',
-    Year:'1972',
-    imdbID:'tt0068646'
-  },
-  {
-    Poster: 'http://ia.media-imdb.com/images/M/MV5BNDc2NTM3MzU1Nl5BMl5BanBnXkFtZTcwMTA5Mzg3OA@@._V1_SX300.jpg',
-    Title:'The Godfather: Part II',
-    Type:'movie',
-    Year:'1974',
-    imdbID:'tt0071562'
-  },
-  {
-    Poster: 'http://ia.media-imdb.com/images/M/MV5BMTczMDcxNDA4MV5BMl5BanBnXkFtZTgwNjY1NTk4NjE@._V1_SX300.jpg',
-    Title:'The Godfather: Part III',
-    Type:'movie',
-    Year:'1990',
-    imdbID:'tt0099674'
-  },
-  {
-    Poster: 'http://ia.media-imdb.com/images/M/MV5BMjEyMjcyNDI4MF5BMl5BanBnXkFtZTcwMDA5Mzg3OA@@._V1_SX300.jpg',
-    Title: 'The Godfather Trilogy: 1901-1980',
-    Type:'movie',
-    Year:'1992',
-    imdbID:'tt0150742'
-  }
-];
-
 function escapeRegexCharacters(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
