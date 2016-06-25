@@ -40,5 +40,6 @@
     "webpack": "^1.13.1"
   },
   "devDependencies": {
+    "html-webpack-plugin": "^2.21.0"
   }
 }
