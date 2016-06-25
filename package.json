@@ -16,12 +16,6 @@
   ],
   "author": "Jake Pace",
   "license": "MIT",
-  "babel": {
-    "presets": [
-      "es2015",
-      "react"
-    ]
-  },
   "dependencies": {
     "autosuggest-highlight": "^2.1.1",
     "babel-core": "^6.9.0",
@@ -40,6 +34,11 @@
     "webpack": "^1.13.1"
   },
   "devDependencies": {
-    "html-webpack-plugin": "^2.21.0"
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-react": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "html-webpack-plugin": "^2.21.0",
+    "style-loader": "^0.13.1"
   }
 }
