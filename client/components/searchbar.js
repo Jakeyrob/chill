@@ -4,6 +4,21 @@ import Autosuggest from 'react-autosuggest';
 import highlight from 'autosuggest-highlight';
 import api from '../utils/api';
 
+function debounce(func, wait, immediate) {
+  var timeout;
+  return function() {
+    var context = this, args = arguments;
+    var later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+}
+
 function escapeRegexCharacters(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
@@ -55,7 +70,7 @@ class SearchBar extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.onSuggestionsUpdateRequested = this.onSuggestionsUpdateRequested.bind(this);
     this.getSuggestions = this.getSuggestions.bind(this);
-    this.search = this.search.bind(this);
+    this.search = debounce(this.search, 250);
     this.onSuggestionSelected = this.onSuggestionSelected.bind(this);
   }
 
@@ -95,10 +110,10 @@ class SearchBar extends React.Component {
   }
 
   // TODO: implement onSuggestionSelected
-onSuggestionSelected(event, { suggestion, suggestionValue, sectionIndex, method }) {
-  // set value to suggestion.Title
-  // fire idSearch if method === 'click'
-}
+  onSuggestionSelected(event, { suggestion, suggestionValue, sectionIndex, method }) {
+    // set value to suggestion.Title
+    // fire idSearch if method === 'click'
+  }
   
   onSuggestionsUpdateRequested({ value, reason }) {
     this.setState({
