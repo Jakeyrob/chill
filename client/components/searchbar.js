@@ -4,6 +4,26 @@ import Autosuggest from 'react-autosuggest';
 import highlight from 'autosuggest-highlight';
 import api from '../utils/api';
 
+// function uniq(a) {
+//    return Array.from(new Set(a));
+// }
+
+function uniq(a) {
+    var seen = {};
+    var out = [];
+    var len = a.length;
+    var j = 0;
+    for(var i = 0; i < len; i++) {
+         var item = a[i].imdbID;
+         console.log('item: ', item)
+         if(!seen[item]) {
+               seen[item] = 1;
+               out[j++] = a[i];
+         }
+    }
+    return out;
+}
+
 function debounce(func, wait, immediate) {
   var timeout;
   return function() {
@@ -81,8 +101,9 @@ class SearchBar extends React.Component {
         .then( response => {
           if (response.Response === 'True') {
             console.log('Response from API: ', response);
+            console.log('unique:', uniq(this.state.results.concat(response.Search)))
             this.setState(
-              {results: response.Search}, () => 
+              {results: uniq(this.state.results.concat(response.Search))}, () => 
               this.onSuggestionsUpdateRequested({value: this.state.value, reason:'type'})
             );
             setTimeout(() => console.log('State:', this.state), 250);
