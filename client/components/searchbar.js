@@ -79,22 +79,16 @@ class SearchBar extends React.Component {
    if (this.state.value.trim().length > 2) {
       api.movieSearch(this.state.value)
         .then( response => {
-          if (response.Search) {
+          if (response.Response === 'True') {
             console.log('Response from API: ', response);
             this.setState(
-              {results: response.Search}, 
+              {results: response.Search}, () => 
               this.onSuggestionsUpdateRequested({value: this.state.value, reason:'type'})
             );
-            console.log(this.state);
+            setTimeout(() => console.log('State:', this.state), 250);
           } else {
             this.onSuggestionsUpdateRequested({value: this.state.value, reason:'type'})
           }
-          console.log('Response from API: ', response);
-          this.setState(
-            {results: response.Search}, 
-            this.onSuggestionsUpdateRequested({value: this.state.value, reason:'type'})
-          );
-          console.log('Searchbar state: ',this.state);
         });
    }
   }
