@@ -4,9 +4,6 @@ import Autosuggest from 'react-autosuggest';
 import highlight from 'autosuggest-highlight';
 import api from '../utils/api';
 
-// function uniq(a) {
-//    return Array.from(new Set(a));
-// }
 
 function uniq(a) {
     var seen = {};
@@ -15,7 +12,6 @@ function uniq(a) {
     var j = 0;
     for(var i = 0; i < len; i++) {
          var item = a[i].imdbID;
-         console.log('item: ', item)
          if(!seen[item]) {
                seen[item] = 1;
                out[j++] = a[i];
@@ -94,19 +90,15 @@ class SearchBar extends React.Component {
     this.onSuggestionSelected = this.onSuggestionSelected.bind(this);
   }
 
-  // TODO: Debounce API calls
   search() {
    if (this.state.value.trim().length > 2) {
       api.movieSearch(this.state.value)
         .then( response => {
           if (response.Response === 'True') {
-            console.log('Response from API: ', response);
-            console.log('unique:', uniq(this.state.results.concat(response.Search)))
             this.setState(
               {results: uniq(this.state.results.concat(response.Search))}, () => 
               this.onSuggestionsUpdateRequested({value: this.state.value, reason:'type'})
             );
-            setTimeout(() => console.log('State:', this.state), 250);
           } else {
             this.onSuggestionsUpdateRequested({value: this.state.value, reason:'type'})
           }
@@ -115,7 +107,6 @@ class SearchBar extends React.Component {
   }
 
   onChange(event, { newValue, method }) {
-    // fires API Search request if method === 'type'
     if (method === 'type') {
       this.setState(
         { value: newValue }, 
@@ -126,8 +117,15 @@ class SearchBar extends React.Component {
 
   // TODO: implement onSuggestionSelected
   onSuggestionSelected(event, { suggestion, suggestionValue, sectionIndex, method }) {
-    // set value to suggestion.Title
-    // fire idSearch if method === 'click'
+     
+     if (method === 'click')
+      this.setState({ value: suggestion.Title }, 
+        () => { 
+          console.log(this.state.value)
+        }
+      );
+    // Set App.state.selected to suggestion.imdbID
+    // Fire function
   }
   
   onSuggestionsUpdateRequested({ value, reason }) {
@@ -148,7 +146,6 @@ class SearchBar extends React.Component {
     if (this.state.results) {
       return this.state.results.filter(title => regex.test(getSuggestionValue(title)));
     }
-    console.log()
     return [];
   }
 
