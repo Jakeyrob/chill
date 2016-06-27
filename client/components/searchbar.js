@@ -119,11 +119,7 @@ class SearchBar extends React.Component {
   onSuggestionSelected(event, { suggestion, suggestionValue, sectionIndex, method }) {
      
      if (method === 'click')
-      this.setState({ value: suggestion.Title }, 
-        () => { 
-          console.log(this.state.value)
-        }
-      );
+      this.props.selectTitle();
     // Set App.state.selected to suggestion.imdbID
     // Fire function
   }

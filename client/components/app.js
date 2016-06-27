@@ -11,27 +11,28 @@ class App extends React.Component {
     super(props);
     this.state = {
       // Passed up from SearchBar
-      selectedTitleID: '',
+      selected: '',
       // Passed down to MovieList
-      titles: []
+      list: []
     };
 
     this.fetchTitle = this.fetchTitle.bind(this);
+    this.selectTitle = this.selectTitle.bind(this);
   }
 
-  // Sets this.state.selectedTitleID, based on click of search result
-  selectTitle(event) {
-
+  // Sets this.state.selected, based on click of search result
+  selectTitle(id) {
+    this.setState({ selected: id}, () => this.fetchTitle())
   }
 
   // TODO: Change to handle clicking on search result
   // Fire API request with search result's imdbID
-  fetchTitle(event) {
-    event.preventDefault();
-    return api.movieSearch(this.state.query)
+  fetchTitle() {
+    return api.idSearch(this.state.selected)
       .then( response => {
-        this.setState({results: response.Search});
-        console.log(this.state);
+        console.log(response);
+        this.setState({results: response});
+        console.log('state: ', this.state);
       });
   }
 
@@ -40,8 +41,10 @@ class App extends React.Component {
     return (
       <div>
       <h1>Chill</h1>
-        <SearchBar />
-        <MovieList titles={this.state.titles} />
+        <SearchBar 
+          selectTitle={this.selectTitle}
+        />
+        <MovieList titles={this.state.list} />
       </div>
     );
   }
