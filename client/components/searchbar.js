@@ -81,7 +81,6 @@ class SearchBar extends React.Component {
       value: '',
       suggestions: this.getSuggestions(''),
       results: [],
-      selected: ''
     };
     
     this.onChange = this.onChange.bind(this);
@@ -120,7 +119,7 @@ class SearchBar extends React.Component {
   onSuggestionSelected(event, { suggestion, suggestionValue, sectionIndex, method }) {
      
      if (method === 'click') {
-      this.setState({ selected: suggestion.imdbID }, () => this.props.selectTitle(this.state.selected));
+      this.props.selectTitle(suggestion.imdbID);
      }
     // Set App.state.selected to suggestion.imdbID
     // Fire function

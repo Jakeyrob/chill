@@ -16,18 +16,18 @@ class App extends React.Component {
       list: []
     };
 
-    this.fetchTitle = this.fetchTitle.bind(this);
+    this.fetchById = this.fetchById.bind(this);
     this.selectTitle = this.selectTitle.bind(this);
   }
 
   // Sets this.state.selected, based on click of search result
   selectTitle(id) {
-    this.setState({ selected: id}, () => this.fetchTitle())
+    this.setState({ selected: id}, () => this.fetchById())
   }
 
   // TODO: Change to handle clicking on search result
   // Fire API request with search result's imdbID
-  fetchTitle() {
+  fetchById() {
     return api.idSearch(this.state.selected)
       .then( response => {
         console.log(response);
