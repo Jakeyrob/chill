@@ -95,8 +95,9 @@ class SearchBar extends React.Component {
       api.movieSearch(this.state.value)
         .then( response => {
           if (response.Response === 'True') {
+            const results = response.Search.filter((result) => result.Type !== 'game');
             this.setState(
-              {results: uniq(this.state.results.concat(response.Search))}, () => 
+              {results: uniq(this.state.results.concat(results))}, () => 
               this.onSuggestionsUpdateRequested({value: this.state.value, reason:'type'})
             );
           } else {
