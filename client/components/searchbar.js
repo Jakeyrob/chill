@@ -80,7 +80,8 @@ class SearchBar extends React.Component {
     this.state = {
       value: '',
       suggestions: this.getSuggestions(''),
-      results: []
+      results: [],
+      selected: ''
     };
     
     this.onChange = this.onChange.bind(this);
@@ -118,8 +119,9 @@ class SearchBar extends React.Component {
   // TODO: implement onSuggestionSelected
   onSuggestionSelected(event, { suggestion, suggestionValue, sectionIndex, method }) {
      
-     if (method === 'click')
-      this.props.selectTitle();
+     if (method === 'click') {
+      this.setState({ selected: suggestion.imdbID }, () => this.props.selectTitle(this.state.selected));
+     }
     // Set App.state.selected to suggestion.imdbID
     // Fire function
   }
