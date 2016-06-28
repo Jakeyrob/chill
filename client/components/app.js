@@ -32,7 +32,6 @@ class App extends React.Component {
       .then( response => {
         console.log(response);
         this.setState({list: this.state.list.concat(response)});
-        console.log('state: ', this.state);
       });
   }
 

@@ -118,8 +118,9 @@ class SearchBar extends React.Component {
   // TODO: implement onSuggestionSelected
   onSuggestionSelected(event, { suggestion, suggestionValue, sectionIndex, method }) {
      
-     if (method === 'click') {
+     if (method === 'click' || method === 'enter') {
       this.props.selectTitle(suggestion.imdbID);
+      setTimeout(() => this.setState({ value: '' }), 200);
      }
     // Set App.state.selected to suggestion.imdbID
     // Fire function
