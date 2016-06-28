@@ -8,7 +8,6 @@ const WebRating = ({rating}) => {
       stars += "*";
     }
   }
-  console.log(stars);
   return <div classname='stars'>{stars}</div>;
 };
 

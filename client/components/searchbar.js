@@ -91,7 +91,7 @@ class SearchBar extends React.Component {
   }
 
   search() {
-   if (this.state.value.trim().length > 2) {
+   if (this.state.value.trim().length > 1) {
       api.movieSearch(this.state.value)
         .then( response => {
           if (response.Response === 'True') {
