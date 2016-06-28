@@ -31,7 +31,7 @@ class App extends React.Component {
     return api.idSearch(this.state.selected)
       .then( response => {
         console.log(response);
-        this.setState({results: response});
+        this.setState({list: this.state.list.concat(response)});
         console.log('state: ', this.state);
       });
   }

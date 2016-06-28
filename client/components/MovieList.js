@@ -12,9 +12,7 @@ class MovieList extends React.Component {
 
   render() {
     // TODO: Uncomment & remove stray div to display movie cards
-    return <div> </div>
-
-    /* (
+    return     (
       <div>
         {this.props.titles.map((result) => (
           <MovieCard
@@ -30,7 +28,6 @@ class MovieList extends React.Component {
         ))}
       </div>
     );
-    */
   }
 };
 
