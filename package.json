@@ -4,7 +4,7 @@
   "description": "VOD companion app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack -w"
   },
   "keywords": [
     "netflix",
@@ -27,6 +27,7 @@
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.5.1",
     "eslint-plugin-react": "^5.1.1",
+    "express": "^4.14.0",
     "react": "^15.1.0",
     "react-autosuggest": "^3.7.4",
     "react-dom": "^15.1.0",
@@ -40,8 +41,5 @@
     "css-loader": "^0.23.1",
     "html-webpack-plugin": "^2.21.0",
     "style-loader": "^0.13.1"
-  },
-  "scripts": {
-    "start": "webpack -w"
   }
 }
