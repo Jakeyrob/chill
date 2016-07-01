@@ -14,4 +14,6 @@ module.exports = {
       .then(response => response.ok ? response.json() : console.log("Invalid server response"))
       .catch(error => console.error("Failed to fetch id: " + error.message));
   }
+
+  // TODO: write controllers for Login and Signup
 };
