@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MovieList from './MovieList';
 import SearchBar from './Searchbar';
+import Signup from './Signup';
+import Login from './Login';
 import api from '../utils/api';
 
 
@@ -44,6 +46,8 @@ class App extends React.Component {
           selectTitle={this.selectTitle}
         />
         <MovieList titles={this.state.list} />
+        <Signup />
+        <Login />
       </div>
     );
   }

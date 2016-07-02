@@ -16,12 +16,14 @@ class Login extends React.Component {
       <div>
         <h1>Login</h1>
         <form>
-          Username: <br>
+          Username: <br /> 
           <input type="text" placeholder="username" value={this.state.username}></input>
-          Password: <br>
+          Password: <br />
           <input type="password" placeholder="password" value={this.state.password}></input>
         </form>
       </div>
     );
   }
-}
+};
+
+module.exports = Login;

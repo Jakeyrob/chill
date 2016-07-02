@@ -20,18 +20,20 @@ class Signup extends React.Component {
       <div>
         <h1>Sign Up</h1>
         <form>
-          Username: <br>
+          Username: <br />
           <input type="text" placeholder="username" value={this.state.username}></input>
-          Password: <br>
+          Password: <br />
           <input type="password" placeholder="password" value={this.state.password}></input>
-          Confirm Password: <br>
+          Confirm Password: <br />
           <input type="password" placeholder="confirmPassword" value={this.state.confirmPassword}></input>
-          Email: <br>
+          Email: <br />
           <input type="email" placeholder="email" value={this.state.email}></input>
           <button type="submit">Submit</button>
         </form>
       </div>
     );
   }
-}
+};
+
+module.exports = Signup;
 
